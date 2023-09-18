@@ -4,13 +4,8 @@ import { Link } from "react-router-dom";
 import play from "../images/play-button.png";
 import Pagination from "./pagination ";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchMovie } from "../redux/movie/movieAction";
 function Cards() {
   let selector = useSelector((state) => state.playNow);
-  let dispatch = useDispatch();
-  let handleMovie = (id) => {
-    dispatch(fetchMovie(id));
-  };
   return (
     <div>
       {!selector.loading && (
@@ -22,17 +17,28 @@ function Cards() {
                 className=" big-card relative rounded-lg overflow-hidden   duration-500 hover:z-10  "
                 id={c.id}
               >
-                <Link
-                  onClick={() => handleMovie(c.id)}
-                  className="card relative"
-                  to={`/${c.id}`}
-                >
+                <Link className="card relative" to={`/${c.id}`}>
                   <img
                     className="bg-mainBlue opacity-80 hover:opacity-100 duration-500"
                     src={`https://image.tmdb.org/t/p/original/${c.poster_path}`}
                     alt=""
                     loading="lazy"
                   />
+                  {/* <div className=" box-card absolute bottom-0 w-full h-1/4 bg-gray-200 shadow-lg shadow-black opacity-100 duration-500 px-4 py-2 flex flex-col justify-between hidden      ">
+                    <div className="flex items-center   justify-between w-full">
+                      <h4 className=" font-bold lg:text-md text-sm">
+                        {c.title.substring(0, 20)}
+                      </h4>
+                      <p className=" font-bold text-sm">
+                        <span className=" text-mainRed ">{c.vote_average}</span>
+                        /10
+                      </p>
+                    </div>
+                    <div className="flex items-center justify-between w-full">
+                      <p className=" text-sm font-sans">{c.release_date}</p>
+                      <img className="w-10 h-10" src={play} alt="" />
+                    </div>
+                  </div> */}
                 </Link>
               </div>
             ))}

@@ -15,7 +15,6 @@ function Landing() {
   let selector = useSelector((state) => state.playNow);
   let dispatch = useDispatch();
 
-  // let data = useAuth();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -51,7 +50,7 @@ function Landing() {
               <Ball img={img} setImg={setImg} />
             </div>
 
-            <div className=" over absolute w-full h-full  top-0  "></div>
+            {/* <div className=" over absolute w-full h-full  top-0  "></div> */}
           </div>
           <Cards />
         </>

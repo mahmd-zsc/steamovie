@@ -8,11 +8,14 @@ import { changePage, fetchData } from "../redux/playNow/playAction";
 function Header() {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.playNow);
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [selector.page]);
   useEffect(() => {
     dispatch(fetchData(selector.page));
     if (!selector.loading) {
-      console.log(selector);
     }
   }, [selector.page]);
   return (

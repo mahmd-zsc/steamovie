@@ -7,12 +7,12 @@ import Home from "./components/home/home";
 import { AuthProvider } from "./components/context";
 import Movie from "./components/movie/movie";
 import SearchPage from "./components/searchPage/searchPage";
-import { Provider, useDispatch } from "react-redux";
+import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./components/redux/store";
 function App() {
 
   return (
-    <div className=" app   select-none    ">
+    <div className=" app   select-none min-h-screen    ">
       <BrowserRouter>
         <Provider store={store}>
           <AuthProvider>

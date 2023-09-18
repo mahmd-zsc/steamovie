@@ -26,7 +26,7 @@ function Loading() {
         </div>
         <div className=" flex justify-center items-center gap-1 mt-4">
           {Array.from({ length: 5 }, (_, index) => (
-            <div className="w-8 h-8 bg-darkBlue rounded-full"></div>
+            <div key={index} className="w-8 h-8 bg-darkBlue rounded-full"></div>
           ))}
         </div>
       </div>

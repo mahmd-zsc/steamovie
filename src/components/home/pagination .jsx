@@ -33,7 +33,7 @@ function Pagination() {
   };
   useEffect(() => {
     const active = document.querySelector(`#number_${selector.page}`);
-    active.classList.add("active");
+    active?.classList.add("active");
   }, [selector.page]);
   useEffect(() => {
     if (selector.page === 1) {
@@ -42,10 +42,10 @@ function Pagination() {
   }, []);
   return (
     !selector.loading && (
-      <div className=" w-80 h-16 rounded-lg flex items-center ">
+      <div className=" w-72 h-16 rounded-lg flex items-center ">
         <img
           onClick={handlePrevious}
-          className={` w-8 h-8 cursor-pointer hover:bg-mainRed rounded-full duration-300  ${
+          className={` w-6 h-6 cursor-pointer hover:bg-mainRed rounded-full duration-300  ${
             !previous ? "disabled" : null
           }  `}
           src={previousImg}
@@ -57,7 +57,7 @@ function Pagination() {
               <div
                 id={`number_${n}`}
                 onClick={() => hadleNubmer(n)}
-                className="  pag bg-white hover:bg-mainRed duration-300 hover:text-white flex justify-center items-center w-10 h-10  rounded-full cursor-pointer border border-mainRed  "
+                className="  pag bg-white hover:bg-mainRed duration-300 hover:text-white flex justify-center items-center w-8 h-8  rounded-full cursor-pointer   "
               >
                 <p className="  font-bold">{n}</p>
               </div>
@@ -66,7 +66,7 @@ function Pagination() {
         </div>
         <img
           onClick={handleNext}
-          className={` w-8 h-8 cursor-pointer hover:bg-mainRed rounded-full duration-300 ${
+          className={` w-6 h-6 cursor-pointer hover:bg-mainRed rounded-full duration-300 ${
             !next ? "disabled" : null
           }  `}
           src={nextImg}
