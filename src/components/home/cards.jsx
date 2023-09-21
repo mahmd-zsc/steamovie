@@ -14,7 +14,7 @@ function Cards() {
   return (
     <div>
       {!selector.loading && (
-        <div className=" sm:px-0 flex flex-col items-center min-h-[200px]   px-14 pb-10 ">
+        <div className=" sm:px-0 flex flex-col items-center min-h-[200px]   px-14 pb-10 mt-10 ">
           <div className="cards grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 container sm:gap-6 gap-10  pb-20 ">
             {selector.data.map((c) => (
               <div

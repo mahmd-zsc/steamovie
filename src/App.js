@@ -9,8 +9,8 @@ import Movie from "./components/movie/movie";
 import SearchPage from "./components/searchPage/searchPage";
 import { Provider, useDispatch, useSelector } from "react-redux";
 import store from "./components/redux/store";
+import TopRate from "./components/topRate/topRate";
 function App() {
-
   return (
     <div className=" app   select-none min-h-screen    ">
       <BrowserRouter>
@@ -21,6 +21,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/:movieId" element={<Movie />} />
               <Route path="/searchPage" element={<SearchPage />} />
+              <Route path="/top-rate" element={<TopRate />} />
             </Routes>
           </AuthProvider>
         </Provider>

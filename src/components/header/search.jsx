@@ -33,9 +33,8 @@ function Search() {
         !searchBar.current.contains(e.target)
       ) {
         searchBar.current.classList.add("hidden");
-      } else if (!form.current.contains(e.target)) {
-        setOpen(false);
-        console.log(open);
+      }
+      if (!searchMenu.current && form.current) {
       }
     };
 
@@ -43,21 +42,6 @@ function Search() {
 
     return () => {
       window.removeEventListener("click", handleSearchBar);
-    };
-  }, []);
-
-  // Close the search menu when submitting the form
-  useEffect(() => {
-    const handleFormSubmit = (e) => {
-      if (!form.current.contains(e.target)) {
-        setOpen(false);
-      }
-    };
-
-    window.addEventListener("click", handleFormSubmit);
-
-    return () => {
-      window.removeEventListener("click", handleFormSubmit);
     };
   }, []);
 

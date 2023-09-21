@@ -7,7 +7,7 @@ export const fetchData = (page) => {
 
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/discover/movie?api_key=d633895f69a73e6f50752b9876aaea53&page=${page}`
+        `https://api.themoviedb.org/3/discover/movie?api_key=d633895f69a73e6f50752b9876aaea53&media_type=movie,tv&page=${page}`
       );
       dispatch({
         type: typeAction.FETCH_DATA_SUCCESS,

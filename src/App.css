@@ -14,15 +14,8 @@
   background-color: #9f0707;
 }
 .app {
-  /* background-color: red; */
-  /* background: linear-gradient(#000238,#000123); */
-  background: linear-gradient(
-      217deg,
-      rgba(0, 10, 64, 0.8),
-      rgba(32, 0, 191, 0) 70.71%
-    ),
-    linear-gradient(127deg, rgba(0, 21, 85, 0.8), rgb(3, 7, 80) 70.71%),
-    linear-gradient(336deg, #000123, rgba(0, 0, 0, 0.989) 70.71%);
+  /* background-color: #000353; */
+  background: linear-gradient(#000238,#000123);
 }
 ::-webkit-scrollbar {
   width: 4px;
@@ -64,4 +57,8 @@
 }
 .big-card:hover {
   box-shadow: 0px 0px 20px 2px;
+}
+.landing-movie {
+  background-position: 50% 50%;
+  background-size: cover;
 }

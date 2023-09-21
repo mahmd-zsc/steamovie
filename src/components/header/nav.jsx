@@ -14,10 +14,6 @@ function Nav() {
       path: "/top-rate",
     },
     {
-      title: "Upcoming",
-      path: "/upcoming",
-    },
-    {
       title: "Watched List",
       path: "/watched-list",
     },
@@ -60,7 +56,7 @@ function Nav() {
         />
         <ul
           ref={ul}
-          className="  absolute  text-gray-400  top-12  right-4  font-bold w-40 grid grid-rows-4 gap-4 rounded-lg py-2   bg-mainRed z-50 hidden animate__animated animate__bounceIn        "
+          className="  absolute  text-gray-400  top-12  right-4  font-bold w-40 grid grid-rows-3 gap-4 rounded-lg py-2   bg-mainRed z-50 hidden animate__animated animate__bounceIn        "
         >
           {nav.map((n, index) => (
             <li key={index} className=" w-full">
