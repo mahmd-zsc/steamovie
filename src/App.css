@@ -14,8 +14,8 @@
   background-color: #9f0707;
 }
 .app {
-  /* background-color: #000353; */
-  background: linear-gradient(#000238,#000123);
+  background-color: #000235;
+  /* background: linear-gradient(#000238, #000123); */
 }
 ::-webkit-scrollbar {
   width: 4px;
@@ -27,7 +27,8 @@
   height: 10px;
   /* border-radius: 50%; */
 }
-.search::-webkit-scrollbar {
+.search::-webkit-scrollbar,
+.info::-webkit-scrollbar {
   width: 0;
 }
 .box-card {
@@ -61,4 +62,19 @@
 .landing-movie {
   background-position: 50% 50%;
   background-size: cover;
+}
+.loading {
+  background-color: #00011d;
+  animation: loading 5s linear infinite;
+}
+@keyframes loading {
+  0% {
+    background-color: #00011d;
+  }
+  50% {
+    background-color: rgb(32, 22, 67);
+  }
+  100% {
+    background-color: #00011d;
+  }
 }

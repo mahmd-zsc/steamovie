@@ -5,6 +5,7 @@ let initialState = {
   loading: true,
   error: null,
   page: 1,
+  ball: 0,
 };
 
 let playNowReducer = (state = initialState, action) => {
@@ -31,6 +32,16 @@ let playNowReducer = (state = initialState, action) => {
       return {
         ...state,
         page: action.payload,
+      };
+    case typeAction.CHANGE_LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case typeAction.CHANGE_BALL:
+      return {
+        ...state,
+        ball: action.payload,
       };
     default:
       return state;

@@ -4,7 +4,11 @@ import nextImg from "../images/next.png";
 import previousImg from "../images/previous.png";
 import { type } from "@testing-library/user-event/dist/type";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage } from "../redux/playNow/playAction";
+import {
+  changeLoading,
+  changePage,
+  playNowFetchData,
+} from "../redux/playNow/playAction";
 
 function Pagination() {
   const dispatch = useDispatch();
@@ -21,11 +25,15 @@ function Pagination() {
   let handleNext = () => {
     if (next) {
       dispatch(changePage(selector.page + 1));
+      // dispatch(changeLoading());
+      dispatch(playNowFetchData(selector.page));
     }
   };
   let handlePrevious = () => {
     if (previous) {
       dispatch(changePage(selector.page - 1));
+      dispatch(playNowFetchData(selector.page));
+      // dispatch(changeLoading());
     }
   };
   let hadleNubmer = (num) => {

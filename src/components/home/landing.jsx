@@ -7,18 +7,21 @@ import Cards from "./cards";
 import Loading from "./loading";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { changePage, fetchData } from "../redux/playNow/playAction";
+import {
+  changeBall,
+  changePage,
+  fetchData,
+  playNowFetchData,
+} from "../redux/playNow/playAction";
 
 function Landing() {
   let [img, setImg] = useState(0);
   const location = useLocation();
   let selector = useSelector((state) => state.playNow);
   let dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchData(selector.page));
-    if (!selector.loading) {
-    }
-  }, [selector.page]);
+  // useEffect(() => {
+  //   dispatch(playNowFetchData(selector.page));
+  // }, [selector.page]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -28,6 +31,7 @@ function Landing() {
         setImg(0);
       }
     }, 10000);
+    dispatch(changeBall(img));
 
     return () => clearInterval(intervalId);
   }, [img]);

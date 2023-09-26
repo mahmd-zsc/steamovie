@@ -39,10 +39,10 @@ function Movie() {
           }}
           className="landing-movie"
         >
+          <div className="overflow absolute w-full h-full bg-black top-0 opacity-30"></div>
           <div className="relative  container z-20 flex flex-col lg:flex-row items-center justify-center w-full h-full gap-4 lg:gap-20 ">
             <Landing />
             <Info />
-            <div className="overflow absolute w-full h-full bg-black top-0 opacity-30"></div>
           </div>
         </div>
         <Slider />

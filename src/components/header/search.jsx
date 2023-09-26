@@ -4,28 +4,31 @@ import "animate.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../redux/playNow/playAction";
 import glassImg from "../images/magnifying-glass.png";
+import {
+  changeSearchFinalText,
+  changeSearchText,
+  fetchSearchMovie,
+} from "../redux/search/searchAction";
 
 function Search() {
   const navigate = useNavigate();
-  const data = useAuth();
   const search = useRef(null);
   const searchMenu = useRef(null);
   const form = useRef(null);
+  const inputSearch = useRef(null);
   const searchBar = useRef(null);
   const [text, setText] = useState("");
   const [movies, setMovies] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [open, setOpen] = useState(false);
+  let [loading, setLoading] = useState(true);
+  let [open, setOpen] = useState(false);
 
-  // Toggle the search bar visibility
+  let dispatch = useDispatch();
   const handleSearch = () => {
     searchBar.current.classList.toggle("hidden");
   };
-
-  // Close the search menu when clicking outside
   useEffect(() => {
     const handleSearchBar = (e) => {
       if (
@@ -33,8 +36,6 @@ function Search() {
         !searchBar.current.contains(e.target)
       ) {
         searchBar.current.classList.add("hidden");
-      }
-      if (!searchMenu.current && form.current) {
       }
     };
 
@@ -45,25 +46,27 @@ function Search() {
     };
   }, []);
 
-  // Fetch movie data from API when the text changes
   useEffect(() => {
+    dispatch(changeSearchText(text));
     setLoading(true);
     axios
       .get(
         `https://api.themoviedb.org/3/search/movie?api_key=d633895f69a73e6f50752b9876aaea53&query=${text}`
       )
       .then((res) => {
+        setMovies(res.data);
         setLoading(false);
-        setMovies(res.data.results);
       });
   }, [text]);
-
-  // Handle form submission
+  useEffect(() => {}, [text]);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim().length > 0) {
-      data.changeSearch(movies);
-      navigate("/searchPage");
+      setOpen(false);
+      dispatch(changeSearchFinalText(text));
+      dispatch(fetchSearchMovie(text));
+      navigate("/searchPage/" + text);
+      
     }
   };
 
@@ -71,8 +74,10 @@ function Search() {
     <>
       <div className="w-60 relative">
         <form
+          onFocus={() => setOpen(true)}
+          onBlur={() => setOpen(false)}
           ref={form}
-          className={`relative ${open ? "block" : "hidden"} sm:block`}
+          className={`relative hidden  sm:block`}
           onSubmit={handleSubmit}
           action="#"
         >
@@ -82,8 +87,8 @@ function Search() {
             alt=""
           />
           <input
-            onFocus={() => setOpen(true)}
-            className="h-8 bg-white focus:border-mainRed duration-500 rounded-full px-4 z-40 text-gray-500 outline-none ps-8"
+            ref={inputSearch}
+            className="h-8 bg-white focus:border-mainRed duration-500  rounded-full px-4 z-40 text-gray-500 outline-none ps-8"
             type="search"
             name=""
             id=""
@@ -92,21 +97,19 @@ function Search() {
             value={text}
           />
         </form>
-
-        {movies.length > 0 && (
+        {!loading && movies.results.length > 0 && (
           <div
-            className={`w-full absolute bg-white rounded-lg top-10 ${
-              open ? "block" : "hidden"
-            } sm:block shadow-md shadow-black animate__animated animate__fadeIn`}
+            className={`w-full absolute    bg-white rounded-lg top-10   sm:block shadow-md shadow-black animate__animated animate__fadeIn`}
           >
             <ul
               ref={searchMenu}
-              className="search max-h-80 overflow-y-scroll py-4 flex flex-col gap-1"
+              className={`search  max-h-80 overflow-y-scroll py-4  flex-col gap-1 ${
+                open ? "flex" : "hidden"
+              }`}
             >
-              {movies.slice(0, 10).map((movie) => (
+              {movies.results.slice(0, 20).map((movie) => (
                 <li className="hover:bg-gray-100 duration-500" key={movie.id}>
                   <Link
-                    onClick={() => setOpen(false)}
                     className="block text-gray-500 ps-2 py-1"
                     to={`/${movie.id}`}
                   >
@@ -129,15 +132,21 @@ function Search() {
 
       <div
         ref={searchBar}
-        className="w-full h-60 bg-mainRed absolute left-0 rounded-s-lg rounded-e-lg z-50 sm:hidden hidden animate__animated animate__fadeInDown"
+        className="w-full h-20 bg-mainRed absolute -top-1 left-0 rounded-s-lg rounded-e-lg z-50 sm:hidden hidden animate__animated animate__fadeInDown"
       >
-        <input
-          className="w-[80%] h-10 absolute top-1/2 left-1/2 -translate-x-1/2 text-black bg-white bg-transparent border outline-none border-gray-400 rounded-lg px-4"
-          type="search"
-          name=""
-          id=""
-          placeholder="Search for a movie"
-        />
+        <div className=" relative w-full h-full  flex  items-center justify-center">
+          <form className="w-[80%]" onSubmit={handleSubmit} action="#">
+            <input
+              className="  text-black w-full  bg-white bg-transparent border outline-none border-gray-400 rounded-lg px-4 py-2"
+              type="search"
+              name=""
+              id=""
+              placeholder="Search for a movie"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+          </form>
+        </div>
       </div>
     </>
   );

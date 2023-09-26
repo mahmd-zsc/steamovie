@@ -10,9 +10,13 @@ function Nav() {
       path: "/",
     },
     {
-      title: "Top Rate",
-      path: "/top-rate",
+      title: "Top Movie",
+      path: "/top-movie",
     },
+    // {
+    //   title: "Top TV",
+    //   path: "/top-TV",
+    // },
     {
       title: "Watched List",
       path: "/watched-list",

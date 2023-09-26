@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as typeAction from "./typeAction";
 
-export const fetchData = (page) => {
+export const playNowFetchData = (page) => {
   return async (dispatch) => {
     dispatch({ type: typeAction.FETCH_DATA_REQUEST });
 
@@ -25,5 +25,16 @@ export const changePage = (number) => {
   return {
     type: typeAction.CHANGE_PAGE,
     payload: number,
+  };
+};
+export const changeBall = (ball) => {
+  return {
+    type: typeAction.CHANGE_BALL,
+    payload: ball,
+  };
+};
+export const changeLoading = () => {
+  return {
+    type: typeAction.CHANGE_LOADING,
   };
 };

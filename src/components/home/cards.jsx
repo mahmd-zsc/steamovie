@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context";
 import { Link } from "react-router-dom";
 import play from "../images/play-button.png";
@@ -7,10 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchMovie } from "../redux/movie/movieAction";
 function Cards() {
   let selector = useSelector((state) => state.playNow);
+  let [imageLoaded, setImageLoaded] = useState(false);
   let dispatch = useDispatch();
   let handleMovie = (id) => {
     dispatch(fetchMovie(id));
   };
+  useEffect(()=>{
+
+  },[])
   return (
     <div>
       {!selector.loading && (
@@ -19,7 +23,7 @@ function Cards() {
             {selector.data.map((c) => (
               <div
                 key={c.id}
-                className=" big-card relative rounded-lg overflow-hidden   duration-500 hover:z-10  "
+                className=" big-card relative rounded-lg overflow-hidden bg-darkBlue   duration-500 hover:z-10  "
                 id={c.id}
               >
                 <Link
