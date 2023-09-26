@@ -29,6 +29,9 @@ function Search() {
   const handleSearch = () => {
     searchBar.current.classList.toggle("hidden");
   };
+  let handleClickTitleMovie = () => {
+    setOpen(false);
+  };
   useEffect(() => {
     const handleSearchBar = (e) => {
       if (
@@ -58,7 +61,13 @@ function Search() {
         setLoading(false);
       });
   }, [text]);
-  useEffect(() => {}, [text]);
+  useEffect(() => {
+    const handleOutsideClick = (e) => {};
+    window.addEventListener("click", handleOutsideClick);
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim().length > 0) {
@@ -66,7 +75,6 @@ function Search() {
       dispatch(changeSearchFinalText(text));
       dispatch(fetchSearchMovie(text));
       navigate("/searchPage/" + text);
-      
     }
   };
 
@@ -75,7 +83,7 @@ function Search() {
       <div className="w-60 relative">
         <form
           onFocus={() => setOpen(true)}
-          onBlur={() => setOpen(false)}
+          // onBlur={() => setOpen(false)}
           ref={form}
           className={`relative hidden  sm:block`}
           onSubmit={handleSubmit}
@@ -110,6 +118,7 @@ function Search() {
               {movies.results.slice(0, 20).map((movie) => (
                 <li className="hover:bg-gray-100 duration-500" key={movie.id}>
                   <Link
+                    onClick={handleClickTitleMovie}
                     className="block text-gray-500 ps-2 py-1"
                     to={`/${movie.id}`}
                   >

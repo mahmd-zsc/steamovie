@@ -10,25 +10,23 @@ function Info() {
   // console.log(information);
   let movie = useSelector((state) => state.movie);
   let info = useRef();
+  let over = useRef();
   let dispatch = useDispatch();
   let handleCancel = () => {
     dispatch(changeInfoShow(false));
   };
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      console.log(information.info);
-    };
-
-    window.addEventListener("click", handleOutsideClick);
-
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
+  let handleOverClick = () => {
+    dispatch(changeInfoShow(false));
+  };
 
   return (
     information.info && (
       <div className=" fixed h-screen w-full top-0 left-0 flex justify-center items-center z-50   ">
+        <div
+          onClick={handleOverClick}
+          ref={over}
+          className=" absolute top-0 left-0 bg-black w-full h-full opacity-40"
+        ></div>
         {!movie.loading && (
           <div
             ref={info}
@@ -52,8 +50,6 @@ function Info() {
             <InfoLoading />
           </div>
         )}
-
-        <div className=" absolute over w-full h-full bg-black"></div>
       </div>
     )
   );

@@ -17,27 +17,21 @@ function RemoveCard() {
     dispatch(removeIdFromList(data.id));
     dispatch(changeRemoveCard(false));
   };
-  // useEffect(() => {
-  //   const handleOutsideClick = (e) => {
-  //     if (!removeRef.current.contains(e.target) && removeCard === true) {
-  //       dispatch(changeRemoveCard(false));
-  //     }
-  //   };
-  //   window.addEventListener("click", handleOutsideClick);
-  //   return () => {
-  //     window.removeEventListener("click", handleOutsideClick);
-  //   };
-  // }, []);
+
   return (
     <>
       <div
         className={`${
           removeCard ? "block" : "hidden"
-        } fixed h-screen w-full top-0 left-0`}
+        } fixed h-screen w-full top-0 left-0 flex justify-center items-center`}
       >
         <div
+          onClick={() => dispatch(changeRemoveCard(false))}
+          className=" absolute top-0 left-0 over w-full h-full bg-black z-40  "
+        ></div>
+        <div
           ref={removeRef}
-          className=" absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 md:w-80 py-4 px-4  bg-darkBlue shadow-lg shadow-black text-white rounded-lg z-40  "
+          className=" w-60 md:w-80 py-4 px-4  bg-darkBlue shadow-lg shadow-black text-white rounded-lg z-40 animate__animated  animate__pulse  "
         >
           <p>
             <span className="">{data.title}</span> movie will be removed from
