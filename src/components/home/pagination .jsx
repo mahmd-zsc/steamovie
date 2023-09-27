@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context";
 import nextImg from "../images/next.png";
 import previousImg from "../images/previous.png";
-import { type } from "@testing-library/user-event/dist/type";
 import { useDispatch, useSelector } from "react-redux";
 import {
   changeLoading,
@@ -13,7 +11,6 @@ import {
 function Pagination() {
   const dispatch = useDispatch();
   const selector = useSelector((state) => state.playNow);
-  let data = useAuth();
   let [start, setStart] = useState(selector.page < 4 ? 0 : selector.page - 3);
   let [end, setEnd] = useState(start + 5);
   let [next, setNext] = useState(true);

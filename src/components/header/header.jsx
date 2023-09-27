@@ -38,8 +38,8 @@ function Header() {
 
   return (
     <header className="header container relative  flex w-full  lg:justify-between items-center z-30 py-4 ">
-      <Link to="/">
-        <h1 className=" text-mainRed text-lg font-bold flex-1  lg:flex-none   ">
+      <Link className=" flex-1 lg:flex-none" to="/">
+        <h1 className=" text-mainRed text-lg font-bold     ">
           stea<span className="text-white  text-xl font-bold  ">M</span>ovie
         </h1>
       </Link>

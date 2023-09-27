@@ -3,7 +3,6 @@ import searchImg from "../images/search.png";
 import "animate.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../context";
 import { useDispatch, useSelector } from "react-redux";
 import { changePage } from "../redux/playNow/playAction";
 import glassImg from "../images/magnifying-glass.png";

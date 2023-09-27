@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import Buttom from "./buttom";
 import Ball from "./ball";
-import { useAuth } from "../context";
 import Cards from "./cards";
 import Loading from "./loading";
 import { useLocation } from "react-router-dom";
@@ -19,9 +18,6 @@ function Landing() {
   const location = useLocation();
   let selector = useSelector((state) => state.playNow);
   let dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(playNowFetchData(selector.page));
-  // }, [selector.page]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

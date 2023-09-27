@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context";
 import { useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Title from "./title";

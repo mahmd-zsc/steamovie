@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useAuth } from "../context";
 import { Link } from "react-router-dom";
 import play from "../images/play-button.png";
 import Pagination from "./pagination ";
