@@ -1,4 +1,3 @@
-import axios from "axios";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header";
 import "./App.css";
@@ -11,14 +10,13 @@ import TopRate from "./components/topMovie/topRate";
 import TopRaTV from "./components/topTV/topRateTV";
 import WatchedList from "./components/watchedList/watchedList";
 import NotFound from "./components/movie/notFound";
-import AboutMe from "./components/aboutMe";
+import Footer from "./components/footer";
 function App() {
   return (
     <div className=" app   select-none min-h-screen     ">
       <BrowserRouter>
         <Provider store={store}>
           <Header />
-          <AboutMe />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/:movieId" element={<Movie />} />
@@ -27,7 +25,8 @@ function App() {
             <Route path="/watched-list" element={<WatchedList />} />
             <Route path="/top-TV" element={<TopRaTV />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
+          </Routes>{" "}
+          <Footer />
         </Provider>
       </BrowserRouter>
     </div>
