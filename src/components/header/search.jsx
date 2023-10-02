@@ -67,11 +67,11 @@ function Search() {
 
   return (
     <>
-      <div className="w-60 relative">
+      <div className="sm:w-60 relative">
         <form
           onFocus={() => setOpen(true)}
           ref={form}
-          className={`relative hidden  sm:block`}
+          className={`relative   hidden  sm:block`}
           onSubmit={handleSubmit}
           action="#"
         >
@@ -82,7 +82,7 @@ function Search() {
           />
           <input
             ref={inputSearch}
-            className="h-8 bg-white focus:border-mainRed duration-500  rounded-full px-4 z-40 text-gray-500 outline-none ps-8"
+            className="h-8 bg-white focus:border-mainRed duration-500  rounded-full px-4 z-40 text-gray-500 outline-none ps-8 "
             type="search"
             name=""
             id=""
