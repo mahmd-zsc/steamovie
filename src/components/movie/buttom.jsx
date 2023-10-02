@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import add from "../images/add.png";
+import remove from "../images/remove.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -38,7 +39,7 @@ function Bottom() {
           onClick={handleRemoveWatchedList}
           className=" lg:w-48 lg:h-16 md:w-40 md:h-14 bg-white rounded-full capitalize flex justify-center items-center gap-4 px-4 py-2 text-black disabled:opacity-30 disabled:cursor-not-allowed "
         >
-          <img className="w-3 h-3" src={add} alt="" /> <p>remove list</p>
+          <img className="w-3 h-3" src={remove} alt="" /> <p>remove list</p>
         </button>
       ) : (
         <button

@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 function Slider() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -19,24 +20,35 @@ function Slider() {
       });
   }, []);
   if (!loading) {
+    console.log(movies);
   }
   return (
     !loading && (
-      <motion.div className="carousel container">
-        <motion.div className="inner-carousel flex   ">
+      <div className=" ">
+        <div className="cards grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 container sm:gap-6 gap-10 pb-20">
           {movies
-            .filter((r) => r.poster_path)
-            .map((m) => (
-              <motion.div className="item  " key={m.id}>
-                <img
-                  className="  "
-                  src={`https://image.tmdb.org/t/p/original/${m.poster_path}`}
-                  alt={`movie_${m.id}`}
-                />
-              </motion.div>
+            .filter((f) => f.poster_path)
+            .map((c) => (
+              <div
+                key={c.id}
+                className="big-card relative rounded-lg overflow-hidden bg-darkBlue duration-500 hover:z-10"
+                id={c.id}
+              >
+                <Link
+                  // onClick={() => handleMovie(c.id)}
+                  className="card relative"
+                  to={`/${c.id}`}
+                >
+                  <img
+                    className="bg-mainBlue opacity-80 hover:opacity-100 duration-500"
+                    src={`https://image.tmdb.org/t/p/original/${c.poster_path}`}
+                    alt=""
+                  />
+                </Link>
+              </div>
             ))}
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
     )
   );
 }

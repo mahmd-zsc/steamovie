@@ -7,7 +7,7 @@ function Companies() {
   return (
     <div className="production_companies w-full     flex   justify-between items-center   py-10 lg:py-2  lg:gap-0 mt-10     ">
       {image.map((p) => (
-        <div className=" flex justify-center items-center ">
+        <div key={p.id} className=" flex justify-center items-center ">
           <img
             className=" w-20 "
             src={`https://image.tmdb.org/t/p/original/${p.logo_path}`}

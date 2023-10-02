@@ -30,8 +30,6 @@ function Cards() {
                   className="card relative"
                   to={`/${c.id}`}
                 >
-                  {/* Use Blurhash for lazy loading */}
-
                   <img
                     className="bg-mainBlue opacity-80 hover:opacity-100 duration-500"
                     src={`https://image.tmdb.org/t/p/original/${c.poster_path}`}

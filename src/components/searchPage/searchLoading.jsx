@@ -11,7 +11,7 @@ function SearchLoading() {
         <div className=" w-[90%] grid gap-6   ">
           <div className="bg-lightBlue grid grid-cols-1 gap-px">
             {Array.from({ length: 10 }, (_, index) => (
-              <div className="flex relative items-center  bg-mainBlue py-1 gap-2 ">
+              <div key={index} className="flex relative items-center  bg-mainBlue py-1 gap-2 ">
                 <div className=" loading w-20 h-32 bg-darkBlue"></div>
                 <div className=" flex flex-col gap-2 flex-1">
                   <div className="loading w-1/4 h-8 bg-darkBlue"></div>

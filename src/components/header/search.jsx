@@ -11,42 +11,35 @@ import {
   changeSearchText,
   fetchSearchMovie,
 } from "../redux/search/searchAction";
+import SmallSearch from "./smallSearch";
 
 function Search() {
   const navigate = useNavigate();
-  const search = useRef(null);
   const searchMenu = useRef(null);
   const form = useRef(null);
   const inputSearch = useRef(null);
-  const searchBar = useRef(null);
   const [text, setText] = useState("");
   const [movies, setMovies] = useState([]);
   let [loading, setLoading] = useState(true);
   let [open, setOpen] = useState(false);
 
   let dispatch = useDispatch();
-  const handleSearch = () => {
-    searchBar.current.classList.toggle("hidden");
-  };
+
   let handleClickTitleMovie = () => {
     setOpen(false);
   };
-  useEffect(() => {
-    const handleSearchBar = (e) => {
-      if (
-        !search.current.contains(e.target) &&
-        !searchBar.current.contains(e.target)
-      ) {
-        searchBar.current.classList.add("hidden");
-      }
-    };
-
-    window.addEventListener("click", handleSearchBar);
-
-    return () => {
-      window.removeEventListener("click", handleSearchBar);
-    };
-  }, []);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (text.trim().length > 0) {
+      setOpen(false);
+      dispatch(changeSearchFinalText(text));
+      dispatch(fetchSearchMovie(text));
+      navigate("/searchPage/" + text);
+    }
+  };
+  let changeText = (value) => {
+    setText(value);
+  };
 
   useEffect(() => {
     dispatch(changeSearchText(text));
@@ -60,22 +53,7 @@ function Search() {
         setLoading(false);
       });
   }, [text]);
-  useEffect(() => {
-    const handleOutsideClick = (e) => {};
-    window.addEventListener("click", handleOutsideClick);
-    return () => {
-      window.removeEventListener("click", handleOutsideClick);
-    };
-  }, []);
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (text.trim().length > 0) {
-      setOpen(false);
-      dispatch(changeSearchFinalText(text));
-      dispatch(fetchSearchMovie(text));
-      navigate("/searchPage/" + text);
-    }
-  };
+
 
   return (
     <>
@@ -104,15 +82,13 @@ function Search() {
             value={text}
           />
         </form>
-        {!loading && movies.results.length > 0 && (
+        {!loading && movies.results.length > 0 && open && (
           <div
             className={`w-full absolute    bg-white rounded-lg top-10   sm:block shadow-md shadow-black animate__animated animate__fadeIn`}
           >
             <ul
               ref={searchMenu}
-              className={`search  max-h-80 overflow-y-scroll py-4  flex-col gap-1 ${
-                open ? "flex" : "hidden"
-              }`}
+              className={`search  max-h-80 overflow-y-scroll py-4  flex-col gap-1 `}
             >
               {movies.results.slice(0, 20).map((movie) => (
                 <li className="hover:bg-gray-100 duration-500" key={movie.id}>
@@ -129,33 +105,11 @@ function Search() {
           </div>
         )}
       </div>
-
-      <img
-        onClick={handleSearch}
-        ref={search}
-        className="w-12 sm:hidden"
-        src={searchImg}
-        alt=""
+      <SmallSearch
+        handleSubmit={handleSubmit} // Pass the handleSubmit function as a prop
+        changeText={changeText}
+        text={text}
       />
-
-      <div
-        ref={searchBar}
-        className="w-full h-20 bg-mainRed absolute -top-1 left-0 rounded-s-lg rounded-e-lg z-50 sm:hidden hidden animate__animated animate__fadeInDown"
-      >
-        <div className=" relative w-full h-full  flex  items-center justify-center">
-          <form className="w-[80%]" onSubmit={handleSubmit} action="#">
-            <input
-              className="  text-black w-full  bg-white bg-transparent border outline-none border-gray-400 rounded-lg px-4 py-2"
-              type="search"
-              name=""
-              id=""
-              placeholder="Search for a movie"
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-            />
-          </form>
-        </div>
-      </div>
     </>
   );
 }

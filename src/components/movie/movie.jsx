@@ -20,31 +20,34 @@ function Movie() {
     }
   }, [params]);
 
-  if (!selector.loading) {
-    console.log(selector);
-  }
+  // if (!selector.loading) {
+  //   console.log(selector);
+  // }
 
   return (
     <div>
       {!selector.loading && selector.data && !selector.error && (
-        <div className="relative -top-20">
-          <div
-            style={{
-              backgroundImage: `url("https://image.tmdb.org/t/p/original/${
-                selector.data.belongs_to_collection &&
-                selector.data.belongs_to_collection.backdrop_path
-                  ? selector.data.belongs_to_collection.backdrop_path
-                  : selector.data.backdrop_path
-              }")`,
-            }}
-            className="landing-movie"
-          >
-            <div className="overflow absolute w-full h-full bg-black top-0 opacity-30"></div>
-            <div className="relative  container z-20 flex flex-col lg:flex-row items-center justify-center w-full h-full gap-4 lg:gap-20 ">
-              <Landing />
-              <Info />
+        <div className="">
+          <div className="relative -top-20">
+            <div
+              style={{
+                backgroundImage: `url("https://image.tmdb.org/t/p/original/${
+                  selector.data.belongs_to_collection &&
+                  selector.data.belongs_to_collection.backdrop_path
+                    ? selector.data.belongs_to_collection.backdrop_path
+                    : selector.data.backdrop_path
+                }")`,
+              }}
+              className="landing-movie pb-20"
+            >
+              <div className="overflow absolute w-full h-full bg-black top-0 opacity-30"></div>
+              <div className="relative  container z-20 flex flex-col lg:flex-row items-center justify-center w-full h-full gap-4 lg:gap-20 ">
+                <Landing />
+                <Info />
+              </div>
             </div>
           </div>
+
           <Slider />
         </div>
       )}

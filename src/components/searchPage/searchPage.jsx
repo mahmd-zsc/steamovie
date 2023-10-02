@@ -29,7 +29,7 @@ function SearchPage() {
                     .filter((f) => f.poster_path)
                     .slice(start, end)
                     .map((s) => (
-                      <SearchCard data={s} />
+                      <SearchCard key={s.id} data={s} />
                     ))}
                 </div>
                 {selector.data.length > end && (
