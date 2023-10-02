@@ -25,15 +25,11 @@ function Search() {
 
   let dispatch = useDispatch();
 
-  let handleClickTitleMovie = () => {
-    setOpen(false);
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
     if (text.trim().length > 0) {
       setOpen(false);
       dispatch(changeSearchFinalText(text));
-      dispatch(fetchSearchMovie(text));
       navigate("/searchPage/" + text);
     }
   };
@@ -53,14 +49,27 @@ function Search() {
         setLoading(false);
       });
   }, [text]);
+  useEffect(() => {
+    const handleSearchBar = (e) => {
+      if (movies.results && movies.results.length > 0 && open) {
+        setOpen(false);
+      } else {
+        setOpen(true);
+      }
+    };
 
+    window.addEventListener("click", handleSearchBar);
+
+    return () => {
+      window.removeEventListener("click", handleSearchBar);
+    };
+  }, [movies.results, open]);
 
   return (
     <>
       <div className="w-60 relative">
         <form
           onFocus={() => setOpen(true)}
-          // onBlur={() => setOpen(false)}
           ref={form}
           className={`relative hidden  sm:block`}
           onSubmit={handleSubmit}
@@ -93,7 +102,7 @@ function Search() {
               {movies.results.slice(0, 20).map((movie) => (
                 <li className="hover:bg-gray-100 duration-500" key={movie.id}>
                   <Link
-                    onClick={handleClickTitleMovie}
+                    onClick={() => setOpen(false)}
                     className="block text-gray-500 ps-2 py-1"
                     to={`/${movie.id}`}
                   >

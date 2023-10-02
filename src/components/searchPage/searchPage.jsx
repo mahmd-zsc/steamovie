@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Title from "./title";
 import SearchLoading from "./searchLoading";
 import SearchCard from "./searchCard";
 import NotResultsSearch from "./notResultsSearch";
-
+import {
+  changeSearchFinalText,
+  changeSearchText,
+  fetchSearchMovie,
+} from "../redux/search/searchAction";
 function SearchPage() {
   let [start, setStart] = useState(0);
   let [end, setEnd] = useState(start + 20);
   let selector = useSelector((state) => state.search);
+  let dispatch = useDispatch();
   let handleMoreMoviesSearch = () => {
     setEnd(end + 20);
   };
   useEffect(() => {
-    // console.log(selector.data.length);
-  }, [selector.data]);
+    dispatch(fetchSearchMovie(selector.finalText));
+    console.log(selector.finalText);
+  }, []);
   return (
     <div className=" container py-10">
       {!selector.loading &&
