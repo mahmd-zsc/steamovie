@@ -13,7 +13,7 @@ function Footer() {
           id="foot"
           className="footer   h-full  px-6 sm:px-0 m-auto flex items-center justify-between "
         >
-          <p className=" text-white">
+          <p className=" text-white text-xs sm:text-md">
             © 2023
             <span className=" text-main_origin font-bold text-mainRed">
               {name}
