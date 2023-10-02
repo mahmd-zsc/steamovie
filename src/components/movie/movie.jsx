@@ -8,6 +8,7 @@ import Landing from "./landing";
 import Companies from "./companies";
 import Slider from "./slider";
 import NotFound from "./notFound";
+import Loading from "./loading";
 
 function Movie() {
   let params = +useParams()?.movieId;
@@ -52,6 +53,7 @@ function Movie() {
         </div>
       )}
       {selector.error && <NotFound />}
+      {selector.loading && <Loading />}
     </div>
   );
 }
