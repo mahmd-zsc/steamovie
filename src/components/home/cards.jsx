@@ -22,7 +22,7 @@ function Cards() {
             {selector.data.map((c) => (
               <div
                 key={c.id}
-                className="big-card relative rounded-lg overflow-hidden bg-darkBlue duration-500 hover:z-10"
+                className="big-card relative rounded-lg overflow-hidden bg-darkBlue  duration-500 hover:z-10 "
                 id={c.id}
               >
                 <Link
@@ -34,6 +34,7 @@ function Cards() {
                     className="bg-mainBlue opacity-80 hover:opacity-100 duration-500"
                     src={`https://image.tmdb.org/t/p/original/${c.poster_path}`}
                     alt=""
+                    loading="lazy"
                   />
                 </Link>
               </div>

@@ -21,10 +21,12 @@ function Movie() {
     }
   }, [params]);
 
-  // if (!selector.loading) {
-  //   console.log(selector);
-  // }
-
+  if (!selector.loading) {
+    console.log(selector);
+  }
+  useEffect(() => {
+    document.title = "steaMovie - " + selector.data.original_title;
+  }, []);
   return (
     <div>
       {!selector.loading && selector.data && !selector.error && (

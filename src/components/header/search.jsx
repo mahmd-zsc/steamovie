@@ -31,6 +31,7 @@ function Search() {
       setOpen(false);
       dispatch(changeSearchFinalText(text));
       navigate("/searchPage/" + text);
+      window.sessionStorage.searchText = text;
     }
   };
   let changeText = (value) => {
@@ -54,7 +55,7 @@ function Search() {
       if (movies.results && movies.results.length > 0 && open) {
         setOpen(false);
       } else {
-        setOpen(true);
+        // setOpen(true);
       }
     };
 
@@ -88,6 +89,7 @@ function Search() {
             id=""
             placeholder="Search for a movie"
             onChange={(e) => setText(e.target.value)}
+            onFocus={() => setOpen(true)}
             value={text}
           />
         </form>

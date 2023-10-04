@@ -11,9 +11,9 @@ function Loading() {
         <div className=" flex flex-col gap-4 flex-1 w-full items-center md:items-start">
           <div className=" loading w-60 h-20 "></div>
           <div className=" loading w-1/2 h-8 "></div>
-          <div className=" flex gap-2 items-center w-1/3">
-            <div className=" loading w-full h-14 rounded-full "></div>
-            <div className=" loading w-full h-14 rounded-full"></div>
+          <div className=" flex gap-2 items-center w-1/5">
+            <div className=" loading w-full h-10 rounded-full "></div>
+            <div className=" loading w-full h-10 rounded-full"></div>
           </div>
           <div className=" loading w-full h-40 "></div>
           <div className=" flex gap-2 items-center w-1/2 ">

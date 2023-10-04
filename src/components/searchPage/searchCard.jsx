@@ -9,7 +9,7 @@ function SearchCard({ data }) {
         <div className=" flex items-center gap-2 ">
           <Link to={"/" + data.id}>
             <img
-              className=" w-20 shadow-md min-h-[100px] hover:shadow-black border border-lightBlue duration-200 rounded-sm"
+              className=" w-20 shadow-md min-h-[120px] hover:shadow-black border border-lightBlue duration-200 rounded-sm"
               src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
               alt=""
             />

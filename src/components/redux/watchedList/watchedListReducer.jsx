@@ -1,7 +1,7 @@
 import * as typeAction from "./watchedListtypeAction";
 
 let initialState = {
-  data: [],
+  data: JSON.parse(window.localStorage.watchedListData) || [],
   loading: true,
   error: null,
   ids: [],

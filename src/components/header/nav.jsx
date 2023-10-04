@@ -66,7 +66,7 @@ function Nav() {
             <li key={index} className=" w-full">
               <NavLink
                 onClick={closeMenu}
-                className=" relative ps-2     text-sm w-full block "
+                className=" relative ps-2     text-sm w-full block  lg:shadow-lg lg:shadow-black "
                 to={n.path}
               >
                 {n.title}

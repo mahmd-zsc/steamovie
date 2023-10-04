@@ -11,7 +11,7 @@ function TopCard({ data, number }) {
         <div className=" flex items-center gap-2 ">
           <Link to={"/" + data.id}>
             <img
-              className=" w-20 shadow-md min-h-40 hover:shadow-black border border-lightBlue duration-300 rounded-sm"
+              className=" w-20 shadow-md min-h-40 hover:shadow-black border border-lightBlue duration-300 rounded-sm loading"
               src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
               alt=""
             />

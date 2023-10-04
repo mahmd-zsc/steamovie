@@ -35,6 +35,9 @@ function Header() {
       top: 0,
     });
   }, [selector.page]);
+  useEffect(() => {
+    window.localStorage.watchedListData = JSON.stringify(watchedList.data);
+  }, [watchedList.data]);
 
   return (
     <header className="header container relative  flex w-full  lg:justify-between items-center z-30 py-4 ">

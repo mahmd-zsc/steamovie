@@ -5,7 +5,7 @@ let initialState = {
   loading: true,
   error: null,
   text: null,
-  finalText: null,
+  finalText: window.sessionStorage.getItem("searchText") || null,
 };
 
 let searchReducer = (state = initialState, action) => {

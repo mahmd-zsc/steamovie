@@ -7,6 +7,9 @@ import Loading from "./loding";
 import Info from "./info/info";
 
 function TopRate() {
+  useEffect(() => {
+    document.title = "steamovie - Top Movie";
+  }, []);
   let selector = useSelector((state) => state.topRate);
   let info = useSelector((state) => state.topRate.info);
   let dispatch = useDispatch();

@@ -2,14 +2,14 @@ import React from "react";
 
 function Loading() {
   return (
-    <div className=" container">
-      <div className="my-6 flex flex-col gap-1">
+    <div className=" container py-10">
+      <div className="mb-6 flex flex-col gap-1">
         <div className="w-32 h-8 bg-darkBlue loading "></div>
         <div className="w-60 h-10 bg-darkBlue loading "></div>
         <div className="w-80 h-6 bg-darkBlue loading "></div>
       </div>
       <div className=" h-full w-full border border-lightBlue bg-mainBlue  rounded-sm flex justify-center items-center py-4 ">
-        <div className=" w-[95%]  bg-lightBlue grid grid-cols-1 gap-px">
+        <div className=" w-[95%]  bg-lightBlue grid grid-cols-1 gap-px ">
           {Array.from({ length: 20 }, (_, index) => (
             <div
               key={index}

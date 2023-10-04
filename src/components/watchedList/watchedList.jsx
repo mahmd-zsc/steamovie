@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Title from "./title";
 import { useSelector } from "react-redux";
 import WatchedListCard from "./watchedListCard";
@@ -8,6 +8,9 @@ import Loading from "./loading";
 
 function WatchedList() {
   let watchedList = useSelector((state) => state.watchedList);
+  useEffect(() => {
+    document.title = "steamovie - WatchedList";
+  }, []);
   return (
     <>
       <div className=" relative container pb-10">

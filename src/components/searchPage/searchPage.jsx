@@ -21,6 +21,9 @@ function SearchPage() {
   useEffect(() => {
     dispatch(fetchSearchMovie(selector.finalText));
     console.log(selector.finalText);
+  }, [selector.finalText]);
+  useEffect(() => {
+    document.title = "steaMovie -  " + selector.finalText;
   }, []);
   return (
     <div className=" container py-10">
@@ -28,7 +31,7 @@ function SearchPage() {
         (selector.data.length > 0 ? (
           <>
             <Title />
-            <div className=" search-Cards w-full border border-lightBlue bg-mainBlue rounded-md flex justify-center items-center mt-10 py-4   ">
+            <div className=" search-Cards  w-full border border-lightBlue bg-mainBlue rounded-md flex justify-center items-center mt-10 py-4   ">
               <div className=" w-[90%] grid gap-6   ">
                 <div className="bg-lightBlue grid grid-cols-1 gap-px">
                   {selector.data
